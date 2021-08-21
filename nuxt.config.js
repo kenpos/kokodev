@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'KokoDev',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'jp'
     },
     meta: [
       { charset: 'utf-8' },
@@ -28,7 +28,7 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
