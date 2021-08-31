@@ -1,37 +1,28 @@
 <template>
   <header>
-      <div class="title">心のデブを信じろ</div>
-      <nav>
-          <nuxt-link to="/">Home</nuxt-link>
-          <nuxt-link to="/about">About</nuxt-link>
-      </nav>
+    <v-card color="basil">
+      <v-card-title class="text-center justify-center py-6">
+        <h1 class="font-weight-bold text-h2 basil--text">
+          心のデブを信じろ
+        </h1>
+      </v-card-title>
+      <v-bottom-navigation v-model="value">
+        <v-btn value="home" to="/">
+          <span>Home</span>
+          <v-icon>mdi-home</v-icon>
+        </v-btn>
+
+        <v-btn value="profile" to="/profile">
+          <span>Profile</span>
+          <v-icon>mdi-account</v-icon>
+        </v-btn>
+        
+        <!-- <v-btn value="articles" to="/articles">
+          <span>articles</span>
+          <v-icon>mdi-note</v-icon>
+        </v-btn> -->
+      </v-bottom-navigation>
+
+    </v-card>
   </header>
 </template>
-
-
-<style>
-header {
-	padding: 15px 30px;
-	background-color: white;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-}
-header .title {
-	color: black;
-	font-size: 24px;
-	font-weight: 900;
-	text-transform: uppercase;
-}
-nav {
-	display: flex;
-	align-items: center;
-	margin: 0 -15px;
-}
-nav a {
-	display: block;
-	margin: 0 15px;
-	color: cornflowerblue;
-}
-</style>

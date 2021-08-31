@@ -1,5 +1,5 @@
 {
-  "name": "KokoDev",
+  "name": "KokoDevVuetyfi",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
+    "@nuxtjs/axios": "^5.13.6",
+    "ap-style-title-case": "^1.1.2",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "vuetify": "^2.5.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.1"
+  }
 }

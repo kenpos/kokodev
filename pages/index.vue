@@ -1,75 +1,67 @@
 <template>
-  <div class="home-page">
-	  <h2>Articles List</h2>
-	  <div class="articles">
-		  <div class="article" v-for="article of articles" :key="article.slug">
-			  <nuxt-link :to="article.slug">
-				  <div class="article-inner">
-						<img :src="require(`~/assets/resources/${article.img}`)" alt="" />
-						<div class="detail">
-							<h3>{{ article.title }}</h3>
-							<p>{{ article.description }}</p>
-						</div>
-				  </div>
-			  </nuxt-link>
-		  </div>
-	  </div>
-  </div>
+ <v-container mt-50 pt-50>
+    <input id="search" v-model="q" placeholder="Search..." />
+    <v-row class="white" style="height: auto;">
+    <v-col v-for="b in articles" :key="b.slug" cols=auto>
+      <v-card
+      max-height="400"
+      max-width="400"
+      min-height="400"
+      min-width="400"
+      elevation="3"
+      class="mx-auto"
+      outlined
+      :to="b.slug"
+      >
+
+      <v-img
+        class="white--text align-end"
+        height="200px"
+        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+      >
+        <v-card-title>{{b.title}}</v-card-title>
+      </v-img>
+
+      <v-card-subtitle class="pb-0">
+        {{b.date}}
+      </v-card-subtitle>
+
+      <v-card-text class="text--primary">
+        <div>{{b.description}}</div>
+      </v-card-text>
+
+      </v-card>
+      </v-col>
+    </v-row>
+ </v-container>  
+
 </template>
 
 <script>
 export default {
-	async asyncData({ $content, params }) {
-		const articles = await $content('article', params.slug)
-			.only(['title', 'description', 'img', 'slug'])
-			.sortBy('createdAt', 'asc')
-			.fetch();
-		return {
-			articles
-		}
-	}
+ async asyncData ({ $content,route }) {
+   const q = route.query.q
+   let query = $content('', { deep: true })
+   .sortBy('date', 'desc')
+   if (q) {
+      // query = query.search(q)
+      query = query.search(q)
+   }
+  //  const query = await $content('articles' || 'index').limit(20)
+   const articles = await query.fetch()
+   return {
+      q,
+      articles
+   }
+  },
+  watch: {
+    q () {
+      this.$router.replace({ query: this.q ? { q: this.q } : undefined }).catch(() => { })
+    }
+  },
+  watchQuery: true
 }
+
 </script>
 
-<style>
-.home-page {
-  padding: 50px 30px;
-}
-h2 {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.articles {
-  margin: 0 auto;
-  max-width: 800px;
-}
-.article {
-  margin-bottom: 15px;
-}
-.article-inner {
-  padding: 15px;
-  background: #FFF;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  display: flex;
-}
-.article-inner img {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-}
-.article-inner .detail {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-h3 {
-  color: #212121;
-  font-size: 24px;
-  text-decoration: none;
-}
-p {
-  color: #888;
-  font-size: 18px;
-  text-decoration: none;
-}
-</style>
+
