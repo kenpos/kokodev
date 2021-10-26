@@ -4,6 +4,7 @@
       <v-container>
         <Header />
         <Breadcrumbs />
+        <Category />
         <Nuxt />
       </v-container>
      </v-main>

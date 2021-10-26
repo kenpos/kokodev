@@ -16,11 +16,6 @@
           <span>Profile</span>
           <v-icon>mdi-account</v-icon>
         </v-btn>
-        
-        <!-- <v-btn value="articles" to="/articles">
-          <span>articles</span>
-          <v-icon>mdi-note</v-icon>
-        </v-btn> -->
       </v-bottom-navigation>
 
     </v-card>

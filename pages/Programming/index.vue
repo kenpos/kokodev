@@ -1,8 +1,8 @@
 <template>
  <v-container mt-50 pt-50>
-    <input id="search" v-model="q" placeholder="Search..." />
     <v-row class="white" style="height: auto;">
     <v-col v-for="b in articles" :key="b.slug" cols=auto>
+
       <v-card
       max-height="400"
       max-width="400"
@@ -33,7 +33,6 @@
       </v-col>
     </v-row>
  </v-container>  
-
 </template>
 
 <script>
@@ -43,28 +42,15 @@ export default {
       path : this.$route.path ,
     }
   },
- async asyncData ({ $content,route }) {
-   const q = route.query.q
-   let query = $content('', { deep: true })
+ async asyncData ({ $content }) {
+   let query = $content('Programming')
    .sortBy('date', 'desc')
-   if (q) {
-      query = query.search(q)
-   }
-  //  const query = await $content('articles' || 'index').limit(20)
-   const articles = await query.fetch()
+   const articles = await query.fetch() 
    return {
-      q,
       articles
    }
-  },
-  watch: {
-    q () {
-      this.$router.replace({ query: this.q ? { q: this.q } : undefined }).catch(() => { })
-    }
-  },
-  watchQuery: true
+  }
 }
-
 </script>
 
 
