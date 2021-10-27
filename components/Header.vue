@@ -17,7 +17,6 @@
           <v-icon>mdi-account</v-icon>
         </v-btn>
       </v-bottom-navigation>
-
     </v-card>
   </header>
 </template>
