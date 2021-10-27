@@ -12,6 +12,7 @@
           </v-col>
 
           <v-col cols="6" md="3">
+            <SNS />
             <Category />
           </v-col>
         </v-row>
