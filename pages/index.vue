@@ -12,22 +12,21 @@
           elevation="3"
           class="mx-auto"
           outlined
-          :to="b.path"
+          :to=b.path
         >
           <v-img
             class="white--text align-end"
             height="200px"
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+            v-bind:src="require('/static/images/'+b.coverImage)"
           >
-            <v-card-title>{{ b.title }}</v-card-title>
           </v-img>
-
+          <v-card-title>{{ b.title }}</v-card-title>
           <v-card-subtitle class="pb-0">
             {{ b.date }}
           </v-card-subtitle>
-
+         
           <v-card-text class="text--primary">
-            <div>{{ b.description }}</div>
+            <div>{{ b.categories }}</div>
           </v-card-text>
         </v-card>
       </v-col>
@@ -41,7 +40,7 @@ import { Category } from "../components/Category.vue";
 export default {
   data() {
     return {
-      path: this.$route.path
+      path: this.$route.path,
     };
   },
   async asyncData({ $content, route }) {

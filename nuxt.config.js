@@ -46,7 +46,10 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     //https://www.npmjs.com/package/vue-social-sharing
-    'vue-social-sharing/nuxt'
+    'vue-social-sharing/nuxt',
+    ['@nuxtjs/google-adsense', {
+      id: process.env.GOOGLE_ADSENSE_ID
+    }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -75,6 +78,11 @@ export default {
       }
     }
   },
+
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID
+  },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
